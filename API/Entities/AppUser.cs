@@ -17,7 +17,7 @@ namespace API.Entities
         public string UserEmail { get; set; }
 
         public List<AppUserRole> UserRoles { get; set; }
-        //public List<Reservation> Reservations { get; set; }
-        //public List<Like> Likes { get; set; }
+        public List<Reservation> Reservations { get; set; }
+        public List<Like> Likes { get; set; }
     }
 }
