@@ -38,10 +38,22 @@ namespace API.Data
                 UserEmail = "petar.tode.kv@gmail.com"
             };
 
+
+            var milos = new AppUser
+            {
+                Name = "Milos",
+                Surname = "Todic",
+                UserName = "milos",
+                CellphoneNumber = "0649559864",
+                UserEmail = "petar.tode.kv@gmail.com"
+            };
+
             await userManager.CreateAsync(admin, "Pa$$w0rd");
             await userManager.AddToRolesAsync(admin, new[] { "Admin", "Moderator" });
             await userManager.CreateAsync(petar, "P@$$w0rd");
             await userManager.AddToRoleAsync(petar, "Mmeber");
+            await userManager.CreateAsync(milos, "P@$$w0rd");
+            await userManager.AddToRoleAsync(milos, "Mmeber");
 
         }
     }
