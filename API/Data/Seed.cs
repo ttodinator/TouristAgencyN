@@ -29,15 +29,6 @@ namespace API.Data
                 UserName = "admin"
             };
 
-            var petar = new AppUser
-            {
-                Name = "Petar",
-                Surname = "Todic",
-                UserName = "petar",
-                CellphoneNumber = "0649559864",
-                UserEmail = "petar.tode.kv@gmail.com"
-            };
-
 
             var milos = new AppUser
             {
@@ -50,8 +41,6 @@ namespace API.Data
 
             await userManager.CreateAsync(admin, "Pa$$w0rd");
             await userManager.AddToRolesAsync(admin, new[] { "Admin", "Moderator" });
-            await userManager.CreateAsync(petar, "P@$$w0rd");
-            await userManager.AddToRoleAsync(petar, "Mmeber");
             await userManager.CreateAsync(milos, "P@$$w0rd");
             await userManager.AddToRoleAsync(milos, "Mmeber");
 
