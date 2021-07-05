@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using API.DTOs;
+using API.Entities;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace API.Helpers
     {
         public AutoMapperProfiles()
         {
-            /*CreateMap<RegisterDto, AppUser>();
+            CreateMap<RegisterDto, AppUser>();
             CreateMap<Destination, DestinationDto>()
                 .ForMember(dest => dest.PhotoUrl, opt => opt
                    .MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).Url));
@@ -18,7 +20,7 @@ namespace API.Helpers
             CreateMap<UserEditDto, AppUser>();
             CreateMap<ReservationDto, Reservation>();
             CreateMap<Reservation, ReservationDto>();
-            CreateMap<Photo, PhotoDto>();*/
+            CreateMap<Photo, PhotoDto>();
 
 
         }
