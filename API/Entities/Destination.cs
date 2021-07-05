@@ -16,10 +16,10 @@ namespace API.Entities
         public double Price { get; set; }
         public DateTime DateAdded { get; set; } = DateTime.Now;
         public string Type { get; set; }
-        //public List<Reservation> Reservations { get; set; }
-        //public List<Like> Likes { get; set; }
+        public List<Reservation> Reservations { get; set; }
+        public List<Like> Likes { get; set; }
         public List<DestinationRooms> Rooms { get; set; }
 
-        //public List<Photo> Photos { get; set; }
+        public List<Photo> Photos { get; set; }
     }
 }
