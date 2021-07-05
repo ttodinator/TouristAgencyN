@@ -17,8 +17,8 @@ namespace API.Data
             this.mapper = mapper;
             this.context = context;
         }
-        //public IUserRepository UserRepository => new UserRepository(context, mapper);
-        //public IDestinationRepository DestinationRepository => new DestinationRepository(context, mapper);
+        public IUserRepository UserRepository => new UserRepository(context, mapper);
+        public IDestinationRepository DestinationRepository => new DestinationRepository(context, mapper);
 
         public async Task<bool> Complete()
         {

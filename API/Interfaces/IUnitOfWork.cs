@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace API.Interfaces
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         Task<bool> Complete();
         bool HasChanged();
+        public IUserRepository UserRepository { get; }
+        public IDestinationRepository DestinationRepository { get; }
     }
 }
