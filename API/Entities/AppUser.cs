@@ -19,5 +19,20 @@ namespace API.Entities
         public List<AppUserRole> UserRoles { get; set; }
         public List<Reservation> Reservations { get; set; }
         public List<Like> Likes { get; set; }
+
+
+        public AppUser()
+        {
+
+        }
+
+        public AppUser(string name, string surname, DateTime dateOfBirth, string cellphoneNumber, string userEmail)
+        {
+            Name = name;
+            Surname = surname;
+            DateOfBirth = dateOfBirth;
+            CellphoneNumber = cellphoneNumber;
+            UserEmail = userEmail;
+        }
     }
 }

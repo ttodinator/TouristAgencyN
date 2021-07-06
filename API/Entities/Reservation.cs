@@ -19,5 +19,20 @@ namespace API.Entities
         public double TotalPrice { get; set; }
 
 
+        public Reservation()
+        {
+
+        }
+
+        public Reservation(int id, int userId, int destinationId, DateTime startDate, DateTime endDate, int numberOfPeople, double totalPrice)
+        {
+            Id = id;
+            UserId = userId;
+            DestinationId = destinationId;
+            StartDate = startDate;
+            EndDate = endDate;
+            NumberOfPeople = numberOfPeople;
+            TotalPrice = totalPrice;
+        }
     }
 }

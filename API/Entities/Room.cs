@@ -10,5 +10,16 @@ namespace API.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public List<DestinationRooms> Rooms { get; set; }
+
+        public Room()
+        {
+
+        }
+
+        public Room(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

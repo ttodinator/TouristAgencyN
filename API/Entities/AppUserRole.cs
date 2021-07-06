@@ -10,5 +10,16 @@ namespace API.Entities
     {
         public AppUser User { get; set; }
         public AppRole Role { get; set; }
+
+        public AppUserRole()
+        {
+
+        }
+
+        public AppUserRole(AppUser user, AppRole role)
+        {
+            User = user;
+            Role = role;
+        }
     }
 }

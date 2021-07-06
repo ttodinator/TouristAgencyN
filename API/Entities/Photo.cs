@@ -15,5 +15,20 @@ namespace API.Entities
         public string PublicId { get; set; }
         public Destination Destination { get; set; }
         public int DestinationId { get; set; }
+
+
+        public Photo()
+        {
+
+        }
+
+        public Photo(int id, string url, bool isMain, string publicId, int destinationId)
+        {
+            Id = id;
+            Url = url;
+            IsMain = isMain;
+            PublicId = publicId;
+            DestinationId = destinationId;
+        }
     }
 }

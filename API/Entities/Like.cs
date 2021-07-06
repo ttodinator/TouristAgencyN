@@ -11,5 +11,19 @@ namespace API.Entities
         public int AppUserId { get; set; }
         public Destination Destination { get; set; }
         public int DestinationId { get; set; }
+
+        public Like()
+        {
+                
+        }
+
+        public Like(int appUserId, int destinationId)
+        {
+            AppUserId = appUserId;
+            DestinationId = destinationId;
+        }
+
+
+
     }
 }
