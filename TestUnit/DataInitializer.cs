@@ -41,6 +41,12 @@ namespace TestUnit
             return like;
         }
 
+        public static Photo getPhoto()
+        {
+            Photo photo = new Photo(1, "url", true, "publicId", 3);
+            return photo;
+        }
+
 
     }
 }

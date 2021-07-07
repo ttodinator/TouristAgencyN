@@ -12,7 +12,19 @@ namespace API.Entities
         public int Id { get; set; }
         public string Url { get; set; }
         public bool IsMain { get; set; }
-        public string PublicId { get; set; }
+        private string publicId;
+        public string PublicId 
+        {
+            get { return publicId; }
+            set
+            {
+                if(value==null || string.IsNullOrEmpty(value))
+                {
+                    throw new IndexOutOfRangeException("PublicId cant be null or empty string");
+                }
+                publicId = value;
+            }
+        }
         public Destination Destination { get; set; }
         public int DestinationId { get; set; }
 
@@ -29,6 +41,12 @@ namespace API.Entities
             IsMain = isMain;
             PublicId = publicId;
             DestinationId = destinationId;
+        }
+
+
+        public override string ToString()
+        {
+            return $"{Id} {Url} {IsMain} {PublicId} {DestinationId}";
         }
     }
 }
