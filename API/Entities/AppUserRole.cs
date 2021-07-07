@@ -21,5 +21,10 @@ namespace API.Entities
             User = user;
             Role = role;
         }
+
+        public override string ToString()
+        {
+            return $"{User.ToString()} {Role.ToString()}";
+        }
     }
 }
