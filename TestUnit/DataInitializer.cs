@@ -22,6 +22,13 @@ namespace TestUnit
             return role;
         }
 
+        public static Reservation getReservation()
+        {
+            DateTime date = new DateTime(1999, 3, 3);
+            Reservation reservation = new Reservation(1, 2, 3, date, date, 10, 200);
+            return reservation;
+        }
+
 
     }
 }
