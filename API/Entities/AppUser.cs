@@ -34,5 +34,21 @@ namespace API.Entities
             CellphoneNumber = cellphoneNumber;
             UserEmail = userEmail;
         }
+
+        public override string ToString()
+        {
+            return $" {Name} {Surname} {DateOfBirth.ToString()} {CellphoneNumber} {UserEmail}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is AppUser user &&
+                   Id == user.Id &&
+                   Name == user.Name &&
+                   Surname == user.Surname &&
+                   DateOfBirth == user.DateOfBirth &&
+                   CellphoneNumber == user.CellphoneNumber &&
+                   UserEmail == user.UserEmail;
+        }
     }
 }
