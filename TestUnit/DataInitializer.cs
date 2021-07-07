@@ -29,6 +29,12 @@ namespace TestUnit
             return reservation;
         }
 
+        public static Room getRoom()
+        {
+            Room room = new Room(1, "room");
+            return room;
+        }
+
 
     }
 }
