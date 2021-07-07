@@ -35,6 +35,12 @@ namespace TestUnit
             return room;
         }
 
+        public static Like getLike()
+        {
+            Like like = new Like(1, 3);
+            return like;
+        }
+
 
     }
 }
