@@ -1,25 +1,23 @@
-﻿using System;
+﻿using API.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using API.Data;
-using API.DTOs;
-using API.Entities;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 
-namespace TestUnit
+namespace Proba
 {
-    public class TestContext:IdentityDbContext<AppUser, AppRole, int,
-                 IdentityUserClaim<int>, AppUserRole, IdentityUserLogin<int>,
-         IdentityRoleClaim<int>, IdentityUserToken<int>>
+    public class TestContext : IdentityDbContext<AppUser, AppRole, int,
+                    IdentityUserClaim<int>, AppUserRole, IdentityUserLogin<int>,
+            IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public DbSet<Destination> Destination { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Like> Likes { get; set; }
-        public DbSet<AppUser> AspNetUsers { get; set; }
+        public DbSet<Room> Room { get; set; }
         public DbSet<DestinationRooms> DestinationRooms { get; set; }
 
         //private RoleManager<AppRole> roleManager
