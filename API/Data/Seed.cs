@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace API.Data
 {
+    /// <summary>
+    /// Seeder klasa koja ubacuje inicijalne podatke u bazu podataka
+    /// </summary>
     public class Seed
     {
         public static async Task SeedUsers(UserManager<AppUser> userManager,

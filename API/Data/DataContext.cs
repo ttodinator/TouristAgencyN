@@ -9,15 +9,29 @@ using System.Threading.Tasks;
 
 namespace API.Data
 {
+    /// <summary>
+    /// Klasa koja sluzi za pristup podacima smesteni u bazi
+    /// </summary>
     public class DataContext : IdentityDbContext<AppUser, AppRole, int,
                  IdentityUserClaim<int>, AppUserRole, IdentityUserLogin<int>,
          IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
 
-
+        /// <summary>
+        /// Destination tabela u bazi podataka
+        /// </summary>
         public DbSet<Destination> Destination { get; set; }
+        /// <summary>
+        /// Reservation tabela u bazi podataka
+        /// </summary>
         public DbSet<Reservation> Reservations { get; set; }
+        /// <summary>
+        /// Likes tabela u bazi podataka
+        /// </summary>
         public DbSet<Like> Likes { get; set; }
+        /// <summary>
+        /// DestinationRooms tabela u bazi
+        /// </summary>
         public DbSet<DestinationRooms> DestinationRooms { get; set; }
 
         //private RoleManager<AppRole> roleManager
@@ -25,7 +39,10 @@ namespace API.Data
         {
 
         }
-
+        /// <summary>
+        /// Metoda koja sluzi za konfigurisanje context klase
+        /// </summary>
+        /// <param name="builder"></param>
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

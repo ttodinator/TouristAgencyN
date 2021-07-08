@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Kontroler koji sluzi za rad sa administratorom
+    /// </summary>
     public class AdminController : BaseApiController
     {
         UserManager<AppUser> userManager;
@@ -19,6 +22,10 @@ namespace API.Controllers
             this.userManager = userManager;
         }
 
+        /// <summary>
+        /// Metoda koja vraca sve korisnike zajedno sa njihovim ulogama
+        /// </summary>
+        /// <returns>ActionResult sa listom korisnika i respektivnih uloga</returns>
         [Authorize(Policy = "RequireAdminRole")]
         [HttpGet("users-with-roles")]
         public async Task<ActionResult> GetUsersWithRoles()
@@ -38,6 +45,12 @@ namespace API.Controllers
             return Ok(users);
         }
 
+        /// <summary>
+        /// Metoda koja menja uloge odredjenog korisnika
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="roles"></param>
+        /// <returns>ActionResult sa listom svih uloga za korisnika</returns>
         [Authorize(Policy = "RequireAdminRole")]
         [HttpPost("edit-roles/{username}")]
         public async Task<ActionResult> EditRoles(string username, [FromQuery] string roles)

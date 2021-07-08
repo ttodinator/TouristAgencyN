@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Kontroler za rad sa korisnicima
+    /// </summary>
     [Authorize]
     public class UserController : BaseApiController
     {
@@ -24,6 +27,10 @@ namespace API.Controllers
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Metoda koja vraca ulogovanog korisnika
+        /// </summary>
+        /// <returns>Podaci o korisniku</returns>
         [HttpGet]
         public async Task<UserDto> GetUser()
         {
@@ -32,7 +39,10 @@ namespace API.Controllers
             return userDto;
         }
 
-
+        /// <summary>
+        /// Metoda koja vraca korisnika zajedno sa listom like-ova
+        /// </summary>
+        /// <returns>Destinacije koje su lik-ovane od strane korisnika</returns>
         [HttpGet("user-likes")]
         public async Task<ActionResult<List<DestinationDto>>> UserLikes()
         {

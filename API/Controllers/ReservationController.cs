@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Kontroler za rad sa rezervacijama
+    /// </summary>
     public class ReservationController : BaseApiController
     {
         IUnitOfWork unitOfWork;
@@ -22,6 +25,12 @@ namespace API.Controllers
             this.mapper = mapper;
         }
 
+
+        /// <summary>
+        /// Metoda koja cuva rezervaciju
+        /// </summary>
+        /// <param name="reservationDto"></param>
+        /// <returns>Action result sa rezervacijom</returns>
         [HttpPost]
         public async Task<ActionResult> AddReservation(ReservationDto reservationDto)
         {

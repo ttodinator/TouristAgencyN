@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Kontroler koji sluzi za registraciju i prijavljivanje korisnika
+    /// </summary>
     public class AccountController : BaseApiController
     {
         UserManager<AppUser> userManager;
@@ -26,6 +29,12 @@ namespace API.Controllers
             this.tokenService = tokenService;
             this.mapper = mapper;
         }
+
+        /// <summary>
+        /// Metoda koja sluzi za registraciju novih korisnika
+        /// </summary>
+        /// <param name="registerDto"></param>
+        /// <returns>UserDto koji sadrzi podatke o korisniku i JWT tokenu</returns>
 
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
@@ -59,6 +68,11 @@ namespace API.Controllers
 
         }
 
+        /// <summary>
+        /// Metoda koja sluzi za prijavljivanje korisnika na sistem
+        /// </summary>
+        /// <param name="loginDto"></param>
+        /// <returns>UserDto koji sadrzi podatke o korisniku i JWT tokenu</returns>
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login([FromBody] LoginDto loginDto)
         {
@@ -90,7 +104,11 @@ namespace API.Controllers
             };
         }
 
-
+        /// <summary>
+        /// Metoda koja sluzi za proveru da li korisnik postoji u bazi
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>boolean vrednost koja govori da li korisnik postoji ili ne u bazi podataka</returns>
         private async Task<bool> UserExists(string username)
         {
             return await userManager.Users.AnyAsync(x => x.UserName == username.ToLower());

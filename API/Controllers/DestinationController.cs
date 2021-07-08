@@ -14,6 +14,9 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Kontroler koji sluzi za rad sa destinacijama
+    /// </summary>
     [Authorize]
     public class DestinationController : BaseApiController
     {
@@ -27,6 +30,11 @@ namespace API.Controllers
             this.mapper = mapper;
             this.photoService = photoService;
         }
+        /// <summary>
+        /// Asinhrona metoda koja vraca sve destinacije
+        /// </summary>
+        /// <param name="destinationParams"></param>
+        /// <returns>Paginirana lista svih destinacija</returns>
 
         [HttpGet]
         public async Task<ActionResult<List<DestinationDto>>> GetDestinations([FromQuery] DestinationParams destinationParams)
@@ -42,13 +50,22 @@ namespace API.Controllers
             return Ok(destinations);
         }
 
+        /// <summary>
+        /// Asinhrona metoda koja vraca destinaciju po zadatom imenu hotela
+        /// </summary>
+        /// <param name="hotel"></param>
+        /// <returns>Destinacija sa zadatim imenom hotela</returns>
         [HttpGet("{hotel}", Name = "GetDestination")]
         public async Task<ActionResult<DestinationDto>> GetDestination(string hotel)
         {
             return await unitOfWork.DestinationRepository.GetDestinationByNameAsync(hotel);
         }
 
-
+        /// <summary>
+        /// Asinhrona klasa koja sluzi za izmenu destinacije
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns>Actionresult sa izmenjenom destinacijom</returns>
         [HttpPut]
         public async Task<ActionResult> UpdateDestination(UpdateDestinationDto dto)
         {
@@ -82,7 +99,11 @@ namespace API.Controllers
             return BadRequest("Failed to update destination");
         }
 
-
+        /// <summary>
+        /// Asinhrona metoda koja cuva destinaciju
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns>ActionResult </returns>
         [Authorize(Policy = "RequireAdminOrModeratorRole")]
         [HttpPost]
         public async Task<ActionResult<AddDestinationDto>> aa(AddDestinationDto dto)
@@ -121,6 +142,12 @@ namespace API.Controllers
             return BadRequest("Failed to make a reservation");
         }
 
+        /// <summary>
+        /// Metoda koja dodaje fotografiju zadatoj destinaciji
+        /// </summary>
+        /// <param name="destinationId"></param>
+        /// <param name="file"></param>
+        /// <returns>ActionResult sa fotografijom</returns>
         [Authorize(Policy = "RequireAdminOrModeratorRole")]
         [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto([FromQuery] int destinationId, IFormFile file)
@@ -154,6 +181,12 @@ namespace API.Controllers
             return BadRequest("Problem adding photos");
         }
 
+
+        /// <summary>
+        /// Metoda koja postavlja odredjenu sliku destinacije kao glavnu
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns>ActionResult</returns>
         [Authorize(Policy = "RequireAdminOrModeratorRole")]
         [HttpPut("set-main-photo")]
         public async Task<ActionResult> SetMainPhoto([FromQuery] EditPhotoDto dto)
@@ -173,6 +206,11 @@ namespace API.Controllers
             return BadRequest("Failed to set main photo");
         }
 
+        /// <summary>
+        /// Metoda koja brise zadatu fotgrafiju
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns>ActionResult</returns>
         [Authorize(Policy = "RequireAdminOrModeratorRole")]
         [HttpDelete("delete-photo")]
         public async Task<ActionResult> DeletePhoto([FromQuery] EditPhotoDto dto)
