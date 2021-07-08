@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
+    /// <summary>
+    /// Dto klasa za unos nove destinacije
+    /// </summary>
     public class AddDestinationDto
     {
         public string City { get; set; }
@@ -15,7 +18,9 @@ namespace API.DTOs
         public double Price { get; set; }
         public DateTime DateAdded { get; set; } = DateTime.Now;
         public string Type { get; set; }
-
+        /// <summary>
+        /// Lista svih soba koje poseduje destinacija
+        /// </summary>
         public List<int> Rooms { get; set; }
     }
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
+    /// <summary>
+    /// Dto klasa za registrovanje korisnika 
+    /// </summary>
     public class RegisterDto
     {
         [Required]

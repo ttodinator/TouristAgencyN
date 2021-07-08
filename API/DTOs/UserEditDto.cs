@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
+    /// <summary>
+    /// Dto klasa za izmenu korisnika apliakcije
+    /// </summary>
     public class UserEditDto
     {
         public string Username { get; set; }

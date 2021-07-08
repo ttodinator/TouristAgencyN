@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
+    /// <summary>
+    /// Dto klasa koja sluzi za slanje destinacije 
+    /// </summary>
     public class DestinationDto
     {
         public int Id { get; set; }
@@ -18,7 +21,13 @@ namespace API.DTOs
         public DateTime DateAdded { get; set; } = DateTime.Now;
         public string Type { get; set; }
         bool isLikedByCurrentUser { get; set; } = false;
+        /// <summary>
+        /// Lista svih soba koja poseduje destinacija
+        /// </summary>
         public List<DestinationRooms> Rooms { get; set; }
+        /// <summary>
+        /// Lista svih fotografija koje poseduje destinacija
+        /// </summary>
         public List<Photo> Photos { get; set; }
         public string PhotoUrl { get; set; }
         public int LikesCount { get; set; } = 0;

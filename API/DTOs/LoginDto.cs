@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
+    /// <summary>
+    /// Dto klasa koja sluzi za prijavljivanje korisnika na sistem
+    /// </summary>
     public class LoginDto
     {
         public string Username { get; set; }

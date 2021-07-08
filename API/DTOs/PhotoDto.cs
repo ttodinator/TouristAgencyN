@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Dto klasa za unos nove fotografije
+    /// </summary>
     public class PhotoDto
     {
         public int Id { get; set; }

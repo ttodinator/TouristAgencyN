@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
+    /// <summary>
+    /// Dto klasa koja sluzi za slanje svih rezervacija odredjenog korisnika
+    /// </summary>
     public class ReservedDestinationsDto
     {
         public int DestinationId { get; set; }
