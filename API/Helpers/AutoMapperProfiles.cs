@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace API.Helpers
 {
+    /// <summary>
+    /// Klasa koja sluzi za podesavanje AutoMapper-a
+    /// </summary>
     public class AutoMapperProfiles : Profile
     {
         public AutoMapperProfiles()

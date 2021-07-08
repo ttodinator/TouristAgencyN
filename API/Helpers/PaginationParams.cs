@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.Helpers
 {
+    /// <summary>
+    /// Klasa koja definise  genericke parametre za paginaciju
+    /// </summary>
     public class PaginationParams
     {
         private const int MaxPageSize = 50;

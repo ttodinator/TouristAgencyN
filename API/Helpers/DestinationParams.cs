@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.Helpers
 {
+    /// <summary>
+    /// Klasa koja definise parametre za paginaciju liste destinacija
+    /// </summary>
     public class DestinationParams : PaginationParams
     {
         public string CurrentDestination { get; set; }

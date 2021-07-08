@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.Helpers
 {
+    /// <summary>
+    /// Klasa koja sluzi za podsevanja vezana za Cloudinary
+    /// </summary>
     public class CloudinarySettings
     {
         public string CloudName { get; set; }

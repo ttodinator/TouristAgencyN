@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace API.Helpers
 {
+    /// <summary>
+    /// Klasa koja sluzi za kreiranje paginirane liste destinacija
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class PagedList<T> : List<T>
     {
         public int CurrentPage { get; set; }
@@ -22,6 +26,13 @@ namespace API.Helpers
             AddRange(items);
         }
 
+        /// <summary>
+        /// Staticka metoda koja sluzi za kreiranje paginirane liste
+        /// </summary>
+        /// <param name="source">Upit iz baze</param>
+        /// <param name="pageNumber">Broj strane</param>
+        /// <param name="pageSize">Broj stavki na strani</param>
+        /// <returns></returns>
         public static async Task<PagedList<T>> CreateAsync(IQueryable<T> source, int pageNumber, int pageSize)
         {
             var count = await source.CountAsync();
