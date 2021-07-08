@@ -36,12 +36,12 @@ namespace TestUnit._SO
 
 
         [Test]
-        public void TestAddLike()
+        public void TestEditUser()
         {
             AppUser appUser1 = context.AspNetUsers.FirstOrDefault(x => x.Name == "name");
-            appUser1.Name = "AAA";
+            appUser1.Name = "name1";
             context.SaveChanges();
-            AppUser appUser2 = context.AspNetUsers.FirstOrDefault(x => x.Name == "AAA");
+            AppUser appUser2 = context.AspNetUsers.FirstOrDefault(x => x.Name == "name1");
             Assert.AreEqual(appUser1, appUser2);
         }
     }
