@@ -15,9 +15,20 @@ namespace API.Entities
 
         }
 
-        public AppRole(List<AppUserRole> userRoles)
+        public AppRole(string roleName)
         {
-            UserRoles = userRoles;
+            Name = roleName;
+        }
+
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is AppRole role &&
+                   Name == role.Name;
         }
     }
 }

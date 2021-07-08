@@ -16,7 +16,19 @@ namespace API.Entities
         public DateTime EndDate { get; set; }
         public int NumberOfPeople { get; set; }
 
-        public double TotalPrice { get; set; }
+        private double totalPrice;
+        public double TotalPrice 
+        {
+            get { return totalPrice; }
+            set
+            {
+                if(value<1 || value>10000)
+                {
+                    throw new IndexOutOfRangeException("Total price must be between a and 10000");
+                }
+                totalPrice=value;
+            }
+        }
 
 
         public Reservation()
@@ -33,6 +45,11 @@ namespace API.Entities
             EndDate = endDate;
             NumberOfPeople = numberOfPeople;
             TotalPrice = totalPrice;
+        }
+
+        public override string ToString()
+        {
+            return $"{Id} {UserId} {DestinationId} {StartDate.ToString()} {EndDate.ToString()} {NumberOfPeople} {TotalPrice}";
         }
     }
 }

@@ -23,6 +23,10 @@ namespace API.Entities
             DestinationId = destinationId;
         }
 
+        public override string ToString()
+        {
+            return $"{AppUserId} {DestinationId}";
+        }
 
 
     }
