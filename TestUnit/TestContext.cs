@@ -20,6 +20,7 @@ namespace TestUnit
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<AppUser> AspNetUsers { get; set; }
+        public DbSet<Photo> Photos { get; set; }
         public DbSet<DestinationRooms> DestinationRooms { get; set; }
 
         //private RoleManager<AppRole> roleManager
