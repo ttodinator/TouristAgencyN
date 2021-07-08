@@ -5,42 +5,42 @@ using System.Text;
 using System.Threading.Tasks;
 using API.Entities;
 using NUnit.Framework;
-using System.Text.Json;
+using Microsoft.EntityFrameworkCore;    
 
 namespace TestUnit._SO
 {
     [TestFixture]
-    class TestRegisterAppUserSO
+    class TestAddDestinationSO
     {
         TestContext context;
-        AppUser appUser;
+        Destination destination;
 
         [SetUp]
         public void su()
         {
             context = new TestContext();
-            appUser = new AppUser("name", "surname", DateTime.Now, "number", "email");
-            context.AspNetUsers.Attach(appUser);
-            context.AspNetUsers.Add(appUser);
+            destination = new Destination(0, "city", "hotel", "trans", 5, "desc", 10, DateTime.Now, "type");
+            context.Destination.Attach(destination);
+            context.Destination.Add(destination);
             context.SaveChanges();
         }
 
         [TearDown]
         public void td()
         {
-            context.Remove(appUser);
+            context.Remove(destination);
             context.SaveChanges();
             context.Dispose();
 
         }
 
-
         [Test]
-        public void TestRegisterAppUser()
+        public void TestAddDestination()
         {
-            AppUser appUser1 = context.AspNetUsers.FirstOrDefault(x => x.Name == "name");
-            context.AspNetUsers.Remove(appUser1);
-            Assert.AreEqual(appUser, appUser1);
+            Destination destination1 = context.Destination.FirstOrDefault(d => d.City == "city");
+            Assert.AreEqual(destination1, destination);
         }
+
+
     }
 }
