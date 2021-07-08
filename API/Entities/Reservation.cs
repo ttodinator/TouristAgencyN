@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Klasa koja se odnosi na rezervacije
+    /// </summary>
     public class Reservation
     {
         public int Id { get; set; }
@@ -17,6 +20,10 @@ namespace API.Entities
         public int NumberOfPeople { get; set; }
 
         private double totalPrice;
+        /// <summary>
+        /// Property koji se odnosi na ukupnu cenu
+        /// <exception cref="IndexOutOfRangeException"></exception>
+        /// </summary>
         public double TotalPrice 
         {
             get { return totalPrice; }

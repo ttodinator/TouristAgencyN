@@ -5,10 +5,16 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Klasa koja se odnosi na sobu
+    /// </summary>
     public class Room
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        /// <summary>
+        /// Lista svih destinacija koje poseduju odredjeni tip sobe
+        /// </summary>
         public List<DestinationRooms> Rooms { get; set; }
 
         public Room()

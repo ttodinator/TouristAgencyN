@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Asocijativna klasa koja sluzi za povezivanje soba i destinacija
+    /// </summary>
     public class DestinationRooms
     {
         public int DestinationId { get; set; }

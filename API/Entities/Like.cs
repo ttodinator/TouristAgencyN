@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Asocijativna klasa koja sluzi za like-ovanje
+    /// </summary>
     public class Like
     {
         public AppUser AppUser { get; set; }

@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Klasa koja se odnosi na uloge koje korisnik moze da poseduje
+    /// </summary>
     public class AppRole : IdentityRole<int>
     {
+        /// <summary>
+        /// Lista svih korisnika koji poseduju odredjenu ulogu
+        /// </summary>
         public List<AppUserRole> UserRoles { get; set; }
 
         public AppRole()

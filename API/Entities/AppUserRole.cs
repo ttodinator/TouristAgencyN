@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Asocijativna klasa koja sluzi da poveze korisnike apliakcije i njihove uloge
+    /// </summary>
     public class AppUserRole : IdentityUserRole<int>
     {
         public AppUser User { get; set; }

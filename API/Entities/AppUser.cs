@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Klasa koja se odnosi na korisnika apliakcije
+    /// </summary>
     public class AppUser : IdentityUser<int>
     {
         public string Name { get; set; }
@@ -15,9 +18,17 @@ namespace API.Entities
         public string CellphoneNumber { get; set; }
 
         public string UserEmail { get; set; }
-
+        /// <summary>
+        /// Lista uloga koje korisnik apliakcije moze da poseduje
+        /// </summary>
         public List<AppUserRole> UserRoles { get; set; }
+        /// <summary>
+        /// Lista koja se odnosi na sve rezervacije koje je korisnik izvrsio
+        /// </summary>
         public List<Reservation> Reservations { get; set; }
+        /// <summary>
+        /// Lista koja se odnosi na sve like-ove korisnika
+        /// </summary>
         public List<Like> Likes { get; set; }
 
 

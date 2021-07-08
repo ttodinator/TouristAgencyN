@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Klasa koja se odnosi na fotografije
+    /// </summary>
     [Table("Photos")]
     public class Photo
     {
@@ -13,6 +16,10 @@ namespace API.Entities
         public string Url { get; set; }
         public bool IsMain { get; set; }
         private string publicId;
+        /// <summary>
+        /// Property koji se odnosi na javni identifikator fotografije
+        /// <exception cref="IndexOutOfRangeException"></exception>
+        /// </summary>
         public string PublicId 
         {
             get { return publicId; }
