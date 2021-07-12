@@ -1,0 +1,617 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="T:API.Controllers.AccountController">
+            <summary>
+            Kontroler koji sluzi za registraciju i prijavljivanje korisnika
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AccountController.Register(API.DTOs.RegisterDto)">
+            <summary>
+            Metoda koja sluzi za registraciju novih korisnika
+            </summary>
+            <param name="registerDto"></param>
+            <returns>UserDto koji sadrzi podatke o korisniku i JWT tokenu</returns>
+        </member>
+        <member name="M:API.Controllers.AccountController.Login(API.DTOs.LoginDto)">
+            <summary>
+            Metoda koja sluzi za prijavljivanje korisnika na sistem
+            </summary>
+            <param name="loginDto"></param>
+            <returns>UserDto koji sadrzi podatke o korisniku i JWT tokenu</returns>
+        </member>
+        <member name="M:API.Controllers.AccountController.UserExists(System.String)">
+            <summary>
+            Metoda koja sluzi za proveru da li korisnik postoji u bazi
+            </summary>
+            <param name="username"></param>
+            <returns>boolean vrednost koja govori da li korisnik postoji ili ne u bazi podataka</returns>
+        </member>
+        <member name="T:API.Controllers.AdminController">
+            <summary>
+            Kontroler koji sluzi za rad sa administratorom
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AdminController.GetUsersWithRoles">
+            <summary>
+            Metoda koja vraca sve korisnike zajedno sa njihovim ulogama
+            </summary>
+            <returns>ActionResult sa listom korisnika i respektivnih uloga</returns>
+        </member>
+        <member name="M:API.Controllers.AdminController.EditRoles(System.String,System.String)">
+            <summary>
+            Metoda koja menja uloge odredjenog korisnika
+            </summary>
+            <param name="username"></param>
+            <param name="roles"></param>
+            <returns>ActionResult sa listom svih uloga za korisnika</returns>
+        </member>
+        <member name="T:API.Controllers.BaseApiController">
+            <summary>
+            Osnovna kontroler klasa
+            </summary>
+        </member>
+        <member name="T:API.Controllers.DestinationController">
+            <summary>
+            Kontroler koji sluzi za rad sa destinacijama
+            </summary>
+        </member>
+        <member name="M:API.Controllers.DestinationController.GetDestinations(API.Helpers.DestinationParams)">
+            <summary>
+            Asinhrona metoda koja vraca sve destinacije
+            </summary>
+            <param name="destinationParams"></param>
+            <returns>Paginirana lista svih destinacija</returns>
+        </member>
+        <member name="M:API.Controllers.DestinationController.GetDestination(System.String)">
+            <summary>
+            Asinhrona metoda koja vraca destinaciju po zadatom imenu hotela
+            </summary>
+            <param name="hotel"></param>
+            <returns>Destinacija sa zadatim imenom hotela</returns>
+        </member>
+        <member name="M:API.Controllers.DestinationController.UpdateDestination(API.DTOs.UpdateDestinationDto)">
+            <summary>
+            Asinhrona klasa koja sluzi za izmenu destinacije
+            </summary>
+            <param name="dto"></param>
+            <returns>Actionresult sa izmenjenom destinacijom</returns>
+        </member>
+        <member name="M:API.Controllers.DestinationController.aa(API.DTOs.AddDestinationDto)">
+            <summary>
+            Asinhrona metoda koja cuva destinaciju
+            </summary>
+            <param name="dto"></param>
+            <returns>ActionResult </returns>
+        </member>
+        <member name="M:API.Controllers.DestinationController.AddPhoto(System.Int32,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Metoda koja dodaje fotografiju zadatoj destinaciji
+            </summary>
+            <param name="destinationId"></param>
+            <param name="file"></param>
+            <returns>ActionResult sa fotografijom</returns>
+        </member>
+        <member name="M:API.Controllers.DestinationController.SetMainPhoto(API.Entities.EditPhotoDto)">
+            <summary>
+            Metoda koja postavlja odredjenu sliku destinacije kao glavnu
+            </summary>
+            <param name="dto"></param>
+            <returns>ActionResult</returns>
+        </member>
+        <member name="M:API.Controllers.DestinationController.DeletePhoto(API.Entities.EditPhotoDto)">
+            <summary>
+            Metoda koja brise zadatu fotgrafiju
+            </summary>
+            <param name="dto"></param>
+            <returns>ActionResult</returns>
+        </member>
+        <member name="T:API.Controllers.ReservationController">
+            <summary>
+            Kontroler za rad sa rezervacijama
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ReservationController.AddReservation(API.DTOs.ReservationDto)">
+            <summary>
+            Metoda koja cuva rezervaciju
+            </summary>
+            <param name="reservationDto"></param>
+            <returns>Action result sa rezervacijom</returns>
+        </member>
+        <member name="T:API.Controllers.UserController">
+            <summary>
+            Kontroler za rad sa korisnicima
+            </summary>
+        </member>
+        <member name="M:API.Controllers.UserController.GetUser">
+            <summary>
+            Metoda koja vraca ulogovanog korisnika
+            </summary>
+            <returns>Podaci o korisniku</returns>
+        </member>
+        <member name="M:API.Controllers.UserController.UserLikes">
+            <summary>
+            Metoda koja vraca korisnika zajedno sa listom like-ova
+            </summary>
+            <returns>Destinacije koje su lik-ovane od strane korisnika</returns>
+        </member>
+        <member name="T:API.Data.DataContext">
+            <summary>
+            Klasa koja sluzi za pristup podacima smesteni u bazi
+            </summary>
+        </member>
+        <member name="P:API.Data.DataContext.Destination">
+            <summary>
+            Destination tabela u bazi podataka
+            </summary>
+        </member>
+        <member name="P:API.Data.DataContext.Reservations">
+            <summary>
+            Reservation tabela u bazi podataka
+            </summary>
+        </member>
+        <member name="P:API.Data.DataContext.Likes">
+            <summary>
+            Likes tabela u bazi podataka
+            </summary>
+        </member>
+        <member name="P:API.Data.DataContext.DestinationRooms">
+            <summary>
+            DestinationRooms tabela u bazi
+            </summary>
+        </member>
+        <member name="M:API.Data.DataContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Metoda koja sluzi za konfigurisanje context klase
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:API.Data.Seed">
+            <summary>
+            Seeder klasa koja ubacuje inicijalne podatke u bazu podataka
+            </summary>
+        </member>
+        <member name="T:API.DTOs.AddDestinationDto">
+            <summary>
+            Dto klasa za unos nove destinacije
+            </summary>
+        </member>
+        <member name="P:API.DTOs.AddDestinationDto.Rooms">
+            <summary>
+            Lista svih soba koje poseduje destinacija
+            </summary>
+        </member>
+        <member name="T:API.DTOs.DestinationDto">
+            <summary>
+            Dto klasa koja sluzi za slanje destinacije 
+            </summary>
+        </member>
+        <member name="P:API.DTOs.DestinationDto.Rooms">
+            <summary>
+            Lista svih soba koja poseduje destinacija
+            </summary>
+        </member>
+        <member name="P:API.DTOs.DestinationDto.Photos">
+            <summary>
+            Lista svih fotografija koje poseduje destinacija
+            </summary>
+        </member>
+        <member name="T:API.DTOs.LoginDto">
+            <summary>
+            Dto klasa koja sluzi za prijavljivanje korisnika na sistem
+            </summary>
+        </member>
+        <member name="T:API.DTOs.RegisterDto">
+            <summary>
+            Dto klasa za registrovanje korisnika 
+            </summary>
+        </member>
+        <member name="T:API.DTOs.ReservationDto">
+            <summary>
+            Dto klasa za cuvanje rezervacije
+            </summary>
+        </member>
+        <member name="P:API.DTOs.ReservationDto.Dates">
+            <summary>
+            Lista datuma
+            </summary>
+        </member>
+        <member name="T:API.DTOs.ReservedDestinationsDto">
+            <summary>
+            Dto klasa koja sluzi za slanje svih rezervacija odredjenog korisnika
+            </summary>
+        </member>
+        <member name="T:API.DTOs.UpdateDestinationDto">
+            <summary>
+            Dto klasa za izmenu destinacije
+            </summary>
+        </member>
+        <member name="P:API.DTOs.UpdateDestinationDto.Rooms">
+            <summary>
+            Lista soba koje poseduje destinacija
+            </summary>
+        </member>
+        <member name="T:API.DTOs.UserDto">
+            <summary>
+            Dto klasa za slanje korisnika aplikacije
+            </summary>
+        </member>
+        <member name="P:API.DTOs.UserDto.Destination">
+            <summary>
+            Lista destinacija
+            </summary>
+        </member>
+        <member name="P:API.DTOs.UserDto.Resevations">
+            <summary>
+            Lista rezervacija
+            </summary>
+        </member>
+        <member name="P:API.DTOs.UserDto.Likes">
+            <summary>
+            Lista like-ova
+            </summary>
+        </member>
+        <member name="T:API.DTOs.UserEditDto">
+            <summary>
+            Dto klasa za izmenu korisnika apliakcije
+            </summary>
+        </member>
+        <member name="T:API.Entities.EditPhotoDto">
+            <summary>
+            Dto klasa koja sluzi za izmenu fotografije
+            </summary>
+        </member>
+        <member name="T:API.Entities.PhotoDto">
+            <summary>
+            Dto klasa za unos nove fotografije
+            </summary>
+        </member>
+        <member name="T:API.Entities.AppRole">
+            <summary>
+            Klasa koja se odnosi na uloge koje korisnik moze da poseduje
+            </summary>
+        </member>
+        <member name="P:API.Entities.AppRole.UserRoles">
+            <summary>
+            Lista svih korisnika koji poseduju odredjenu ulogu
+            </summary>
+        </member>
+        <member name="T:API.Entities.AppUser">
+            <summary>
+            Klasa koja se odnosi na korisnika apliakcije
+            </summary>
+        </member>
+        <member name="P:API.Entities.AppUser.UserRoles">
+            <summary>
+            Lista uloga koje korisnik apliakcije moze da poseduje
+            </summary>
+        </member>
+        <member name="P:API.Entities.AppUser.Reservations">
+            <summary>
+            Lista koja se odnosi na sve rezervacije koje je korisnik izvrsio
+            </summary>
+        </member>
+        <member name="P:API.Entities.AppUser.Likes">
+            <summary>
+            Lista koja se odnosi na sve like-ove korisnika
+            </summary>
+        </member>
+        <member name="T:API.Entities.AppUserRole">
+            <summary>
+            Asocijativna klasa koja sluzi da poveze korisnike apliakcije i njihove uloge
+            </summary>
+        </member>
+        <member name="T:API.Entities.Destination">
+            <summary>
+            Klasa koja se odnosi na destinacije
+            </summary>
+        </member>
+        <member name="P:API.Entities.Destination.Stars">
+            <summary>
+            Propery Stars koje se odnosi na broj zvezdica koje odredjena destinacija poseduje
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            </summary>
+        </member>
+        <member name="P:API.Entities.Destination.Reservations">
+            <summary>
+            Lista svih rezervacija koje su ostvarene za  destinaciju
+            </summary>
+        </member>
+        <member name="P:API.Entities.Destination.Likes">
+            <summary>
+            Lista svih lajkova  destinacije
+            </summary>
+        </member>
+        <member name="P:API.Entities.Destination.Rooms">
+            <summary>
+            Lista svih soba koje ima destinaciju
+            </summary>
+        </member>
+        <member name="P:API.Entities.Destination.Photos">
+            <summary>
+            Lista svih fotografija destinacije
+            </summary>
+        </member>
+        <member name="T:API.Entities.DestinationRooms">
+            <summary>
+            Asocijativna klasa koja sluzi za povezivanje soba i destinacija
+            </summary>
+        </member>
+        <member name="T:API.Entities.Like">
+            <summary>
+            Asocijativna klasa koja sluzi za like-ovanje
+            </summary>
+        </member>
+        <member name="T:API.Entities.Photo">
+            <summary>
+            Klasa koja se odnosi na fotografije
+            </summary>
+        </member>
+        <member name="P:API.Entities.Photo.PublicId">
+            <summary>
+            Property koji se odnosi na javni identifikator fotografije
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            </summary>
+        </member>
+        <member name="T:API.Entities.Reservation">
+            <summary>
+            Klasa koja se odnosi na rezervacije
+            </summary>
+        </member>
+        <member name="P:API.Entities.Reservation.TotalPrice">
+            <summary>
+            Property koji se odnosi na ukupnu cenu
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            </summary>
+        </member>
+        <member name="T:API.Entities.Room">
+            <summary>
+            Klasa koja se odnosi na sobu
+            </summary>
+        </member>
+        <member name="P:API.Entities.Room.Rooms">
+            <summary>
+            Lista svih destinacija koje poseduju odredjeni tip sobe
+            </summary>
+        </member>
+        <member name="T:API.Extensions.ClaimsPrincipleExtensions">
+            <summary>
+            Helper staticka koja klasa koja sluzi za dobijanje podataka o trenutnom korisniku
+            </summary>
+        </member>
+        <member name="M:API.Extensions.ClaimsPrincipleExtensions.GetUsername(System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Staticka metoda koja pronalazi Name za trenutno ulogovanog korisnika
+            </summary>
+            <param name="user">Trenutno ulogovani korisnik</param>
+            <returns>Name korisnika</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:API.Extensions.ClaimsPrincipleExtensions.GetUserId(System.Security.Claims.ClaimsPrincipal)" -->
+        <member name="T:API.Extensions.HttpExtensions">
+            <summary>
+            Staticka heleper klasa koja sluzi za rad sa http zahtevima
+            </summary>
+        </member>
+        <member name="M:API.Extensions.HttpExtensions.AddPaginationHeader(Microsoft.AspNetCore.Http.HttpResponse,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Staticka metoda koja postavlja paginacioni header u zaglvalje http zahteva
+            </summary>
+            <param name="response">odnosi se na http zahtev</param>
+            <param name="currentPage">trenutna strana</param>
+            <param name="itemsPerPage">broj stavki po strani</param>
+            <param name="totalItems">ukupan broj stavki</param>
+            <param name="totalPages">ukupan brojj stranica</param>
+        </member>
+        <member name="T:API.Helpers.AutoMapperProfiles">
+            <summary>
+            Klasa koja sluzi za podesavanje AutoMapper-a
+            </summary>
+        </member>
+        <member name="T:API.Helpers.CloudinarySettings">
+            <summary>
+            Klasa koja sluzi za podsevanja vezana za Cloudinary
+            </summary>
+        </member>
+        <member name="T:API.Helpers.DestinationParams">
+            <summary>
+            Klasa koja definise parametre za paginaciju liste destinacija
+            </summary>
+        </member>
+        <member name="T:API.Helpers.PagedList`1">
+            <summary>
+            Klasa koja sluzi za kreiranje paginirane liste destinacija
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:API.Helpers.PagedList`1.CreateAsync(System.Linq.IQueryable{`0},System.Int32,System.Int32)">
+            <summary>
+            Staticka metoda koja sluzi za kreiranje paginirane liste
+            </summary>
+            <param name="source">Upit iz baze</param>
+            <param name="pageNumber">Broj strane</param>
+            <param name="pageSize">Broj stavki na strani</param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Helpers.PaginationHeader">
+            <summary>
+            Klasa koja definise paginacioni header koji se dodaje http zahtevu
+            </summary>
+        </member>
+        <member name="T:API.Helpers.PaginationParams">
+            <summary>
+            Klasa koja definise  genericke parametre za paginaciju
+            </summary>
+        </member>
+        <member name="T:API.Interfaces.IDestinationRepository">
+            <summary>
+            Repozitorijum za destinacije
+            </summary>
+        </member>
+        <member name="M:API.Interfaces.IDestinationRepository.Update(API.Entities.Destination)">
+            <summary>
+            Metoda za izmenu destiancije 
+            </summary>
+            <param name="destination">Destinacija</param>
+        </member>
+        <member name="M:API.Interfaces.IDestinationRepository.Save(API.Entities.Destination)">
+            <summary>
+            Metoda koja pamti destinaciju
+            </summary>
+            <param name="destination">Destinacija</param>
+        </member>
+        <member name="M:API.Interfaces.IDestinationRepository.GetDestinationsAsync">
+            <summary>
+            Asinhrona metoda koja kao povratnu vrednost ima listu svih destinacija
+            </summary>
+            <returns>Lista svih destiancija</returns>
+        </member>
+        <member name="M:API.Interfaces.IDestinationRepository.GetDestinationsAsync(API.Helpers.DestinationParams)">
+            <summary>
+            Asinhrona metoda koja kao povratnu vrednost ima listu svih destinacija
+            </summary>
+            <param name="destinationParams">Parametri destinacije </param>
+            <returns>Paginirana lista svih destiancija</returns>
+        </member>
+        <member name="M:API.Interfaces.IDestinationRepository.GetDestinationByIdAsync(System.Int32)">
+            <summary>
+            Metoda koja pronalazi destinaciju na osnovu zadatog parametra
+            </summary>
+            <param name="id">Jedinstveni identifiaktor destinacije</param>
+            <returns>Task</returns>
+        </member>
+        <member name="M:API.Interfaces.IDestinationRepository.GetDestinationByNameAsync(System.String)">
+            <summary>
+            Metoda koja pronalazi destinaciju na osnovu zadatog parametra
+            </summary>
+            <param name="hotel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Interfaces.IPhotoService">
+            <summary>
+            Servis koji sluzi za rad sa fotografijama na platoformi Cloudinary
+            </summary>
+        </member>
+        <member name="M:API.Interfaces.IPhotoService.AddPhotoAsync(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Asinhrona Metoda koja dodaje novu fotografiju
+            </summary>
+            <param name="file">Fotografija koja treba da se doda</param>
+            <returns>Task</returns>
+        </member>
+        <member name="M:API.Interfaces.IPhotoService.DeletePhotoAsync(System.String)">
+            <summary>
+            Asinhrona metofa koja brise fotografiju
+            </summary>
+            <param name="publicId">Jedinstveni identifikator fotografije</param>
+            <returns>Task</returns>
+        </member>
+        <member name="T:API.Interfaces.ITokenService">
+            <summary>
+            Interfejs koji sluzi za generisanje JWT tokena
+            </summary>
+        </member>
+        <member name="M:API.Interfaces.ITokenService.CreateToken(API.Entities.AppUser)">
+            <summary>
+            Metoda koja generise JWT token za korisnika.
+            </summary>
+            <param name="user">Objekat tipa AppUser koji se odnosi nakorsnika apliakcije</param>
+            <returns>JWT token koji je tipa string</returns>
+        </member>
+        <member name="T:API.Interfaces.IUnitOfWork">
+            <summary>
+            Interfejs koji sluzi za implementaciju UnitOfWork pattern-a
+            </summary>
+        </member>
+        <member name="M:API.Interfaces.IUnitOfWork.Complete">
+            <summary>
+            Metoda koja se poziva radi provere da li je operacija izvrsena uspesno
+            </summary>
+            <returns>Boolean vrednosti koja govori o statusu izvrsenja operacija</returns>
+        </member>
+        <member name="M:API.Interfaces.IUnitOfWork.HasChanged">
+            <summary>
+            Property koji govori da li je doslo do neke promene u UnitOfWork-u
+            </summary>
+            <returns>Boolean vrednosti koja govori o statusu promene </returns>
+        </member>
+        <member name="P:API.Interfaces.IUnitOfWork.UserRepository">
+            <summary>
+            Property koji se odnosi na repozitorijum za korisnike aplikacije
+            </summary>
+        </member>
+        <member name="P:API.Interfaces.IUnitOfWork.DestinationRepository">
+            <summary>
+            Property koji se odnosi na repozitorijum za destinacije
+            </summary>
+        </member>
+        <member name="T:API.Interfaces.IUserRepository">
+            <summary>
+            Repozitorijum za korisnike aplikacije
+            </summary>
+        </member>
+        <member name="M:API.Interfaces.IUserRepository.Update(API.Entities.AppUser)">
+            <summary>
+            Metoda za izmenu korisnika apliakcije
+            </summary>
+            <param name="user">Korisnik aplikacije</param>
+        </member>
+        <member name="M:API.Interfaces.IUserRepository.GetUsersAsync">
+            <summary>
+            Metoda koja kao povratnu vrednost ima listu svih korisnika aplikacije
+            </summary>
+            <returns>Lista korisnika aplikacije</returns>
+        </member>
+        <member name="M:API.Interfaces.IUserRepository.GetUserByIdAsync(System.Int32)">
+            <summary>
+            Asinhrona metoda koja kao povratnu vrednost ima korisnika sa zadatim id-em
+            </summary>
+            <param name="id">Jedinstveni identifikator korisnika</param>
+            <returns>Korisnik aplikacije</returns>
+        </member>
+        <member name="M:API.Interfaces.IUserRepository.GetUserWithLikesAsync(System.Int32)">
+            <summary>
+            Asinhrona metoda koja kao povratnu vrednost ima korisnika sa zadatim id-em, sadrzi i listu like-ova
+            </summary>
+            <param name="id"></param>
+            <returns>Korisnik apliakcije</returns>
+        </member>
+        <member name="M:API.Interfaces.IUserRepository.GetUserByUsernameAsync(System.String)">
+            <summary>
+            Asinhrona metoda koja kao povratnu vrednost ima korisnika sa zadatim username-om
+            </summary>
+            <param name="username"></param>
+            <returns>Korisnik apliakcije</returns>
+        </member>
+        <member name="M:API.Interfaces.IUserRepository.GetUserWithReservationsAsync(System.Int32)">
+            <summary>
+            Asinhrona metoda koja kao povratnu vrednost ima korisnika sa zadatim id-em, sadrzi i listu reservacija
+            </summary>
+            <param name="id"></param>
+            <returns>Korisnik apliakcije</returns>
+        </member>
+        <member name="M:API.Interfaces.IUserRepository.GetLike(System.Int32,System.Int32)">
+            <summary>
+            Metoda koja pronalazi like na osnovu zadatih parametara
+            </summary>
+            <param name="i">Odnosi se na jedinistveni identifikator korisnika apliakcije</param>
+            <param name="j">Odnosi se na jedinistveni identifikator destinacije</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Interfaces.IUserRepository.DeleteLike(API.Entities.Like)">
+            <summary>
+            Metoda koja brise zadati Like
+            </summary>
+            <param name="l">Objekat tipa Like koji treba da se obrise</param>
+        </member>
+        <member name="M:API.Interfaces.IUserRepository.GetAllLikedDestinations(System.Int32)">
+            <summary>
+            Metoda koja kao povratnu vrednost ima listu svih destinacija koje je korisnik like-ovao
+            </summary>
+            <param name="id">Odnosi se na jedinstveni identifikator korisnika aplikacije</param>
+            <returns>Lista destinacija koje je korisnik like-ovao</returns>
+        </member>
+    </members>
+</doc>
